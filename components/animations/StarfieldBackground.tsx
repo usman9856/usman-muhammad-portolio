@@ -29,7 +29,7 @@ const StarfieldBackground = () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 1.5,
-        velocity: Math.random() * 0.05,
+        velocity: Math.random() * 0.5,
         alpha: Math.random(),
       });
     }

@@ -1,27 +1,36 @@
-import React from 'react';
+"use client";
+import React, { ReactNode } from "react";
+
 interface NeumorphicBoxProps {
   children: ReactNode;
   className?: string;
   onClick?: () => void;
   active?: boolean;
 }
+
 const NeumorphicBox = ({
   children,
-  className = '',
+  className = "",
   onClick,
-  active = false
+  active = false,
 }: NeumorphicBoxProps) => {
-  return <div className={`
-        relative 
-        bg-[#0c1e3a] 
-        rounded-xl
-        ${active ? 'shadow-[inset_3px_3px_6px_rgba(0,0,0,0.5),inset_-3px_-3px_6px_rgba(40,60,100,0.2)]' : 'shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(40,60,100,0.15)]'}
-        transition-all
-        duration-300
-        ${onClick ? 'cursor-pointer hover:shadow-[4px_4px_8px_rgba(0,0,0,0.4),-4px_-4px_8px_rgba(40,60,100,0.2)]' : ''}
-        ${className}
-      `} onClick={onClick}>
+  const boxShadow = active
+    ? "inset 2px 2px 4px rgba(0, 0, 0, 0.5), inset -2px -2px 4px rgba(40, 60, 100, 0.2)"
+    : "4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(40, 60, 100, 0.15)";
+
+  return (
+    <div
+      className={`relative bg-[#0c1e3a] rounded-xl transition-all duration-300 ${
+        onClick
+          ? "cursor-pointer hover:shadow-[3px_3px_6px_rgba(0,0,0,0.4),-3px_-3px_6px_rgba(40,60,100,0.2)]"
+          : ""
+      } ${className}`}
+      style={{ boxShadow }}
+      onClick={onClick}
+    >
       {children}
-    </div>;
+    </div>
+  );
 };
+
 export default NeumorphicBox;

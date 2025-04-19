@@ -38,7 +38,7 @@ const Header = () => {
               <button
                 key={item}
                 onClick={() => scrollTo(item)}
-                className="text-gray-300 hover:text-blue-400 transition-colors capitalize"
+                className="text-gray-300 hover:text-blue-400 transition-colors capitalize cursor-pointer"
               >
                 {item}
               </button>
