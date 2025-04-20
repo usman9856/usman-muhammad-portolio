@@ -14,10 +14,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Usman Muhammad</title>
       </head>
-      <body>
+      <body className="relative z-10">
         <Header />
         <main>{children}</main>
-        <Footer />
       </body>
     </html>
   );
