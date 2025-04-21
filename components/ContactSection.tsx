@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import NeumorphicBox from "./ui/NeumorphicBox";
 import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react";
+import ToastMessage from "../utils/toast";
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,6 +11,12 @@ const ContactSection = () => {
     subject: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [toast, setToast] = useState<{
+    type: "success" | "fail";
+    message: string;
+  } | null>(null);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -18,24 +26,70 @@ const ContactSection = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend or email service
-    console.log("Form submitted:", formData);
-    alert("Thank you for your message! I will get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: "um50765@gmail.com", // Replace this with your recipient email
+          subject: formData.subject,
+          text: formData.message,
+
+          html: `<html>
+  <body style="font-family: Arial, sans-serif; line-height: 1.6; background-color: #f4f4f9; padding: 20px; margin: 0;">
+    <div style="max-width: 600px; margin: 20px auto; padding: 20px; border-radius: 12px; background-color: #ffffff; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-size: 20px; color: #333333; text-align: center; margin-bottom: 20px;">New Contact Message</h2>
+      <p style="font-size: 16px; color: #555555; margin-bottom: 20px; text-align: center;">
+        You’ve received a new message from your portfolio website!
+      </p>
+      <div style="border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; background-color: #f9f9f9;">
+        <p style="font-size: 16px; margin: 0;">
+          <b>From:</b> ${formData.name} (<a href="mailto:${formData.email}" style="color: #007BFF; text-decoration: none;">${formData.email}</a>)
+        </p>
+        <p style="font-size: 16px; color: #555555; margin-top: 10px;">
+          <b>Subject:</b> ${formData.subject}
+        </p>
+        <p style="font-size: 16px; color: #555555; margin-top: 20px; white-space: pre-line;">
+          ${formData.message}
+        </p>
+      </div>
+      <p style="font-size: 14px; color: #999999; margin-top: 20px; text-align: center;">
+        This email was automatically sent from your portfolio contact form.
+      </p>
+    </div>
+  </body>
+</html>           `,
+        }),
+      });
+
+      if (response.ok) {
+        setToast({ type: "success", message: "Message sent successfully!" });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setToast({ type: "fail", message: "Failed to send your message." });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setToast({ type: "fail", message: "An error occurred. Please try again." });
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   return (
     <section id="contact" className="py-20 px-6 bg-[#081529]">
       <div className="container mx-auto max-w-5xl">
         <h2 className="text-3xl font-bold mb-2 text-center">Get In Touch</h2>
         <div className="w-20 h-1 bg-blue-400 mx-auto mb-12"></div>
         <div className="flex flex-col md:flex-row gap-10">
+          {/* Contact Information Section */}
           <div className="md:w-2/5">
             <NeumorphicBox className="p-6 h-full">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">
@@ -76,23 +130,10 @@ const ContactSection = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-8">
-                <h3 className="text-lg font-semibold mb-4">Follow Me</h3>
-                <div className="flex gap-3">
-                  {["github", "linkedin", "twitter", "instagram"].map(
-                    (platform) => (
-                      <NeumorphicBox
-                        key={platform}
-                        className="p-3 hover:text-blue-400 cursor-pointer"
-                      >
-                        <span className="capitalize">{platform[0]}</span>
-                      </NeumorphicBox>
-                    )
-                  )}
-                </div>
-              </div>
             </NeumorphicBox>
           </div>
+
+          {/* Contact Form Section */}
           <div className="md:w-3/5">
             <NeumorphicBox className="p-6">
               <h3 className="text-xl font-semibold mb-6 text-blue-400">
@@ -167,16 +208,32 @@ const ContactSection = () => {
                 </div>
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-blue-500 to-purple-600 py-3 px-6 rounded-lg font-medium hover:opacity-90 transition-opacity"
+                  className={`flex items-center justify-center gap-2 w-full py-3 px-6 rounded-lg font-medium transition-opacity ${isLoading
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90"
+                    }`}
+                  disabled={isLoading}
                 >
-                  Send Message <SendIcon size={16} />
+                  {isLoading ? "Sending..." : "Send Message"}
+                  <SendIcon size={16} />
                 </button>
               </form>
             </NeumorphicBox>
           </div>
         </div>
       </div>
+
+      {/* Render ToastMessage */}
+      {toast && (
+        <ToastMessage
+          type={toast.type}
+          message={toast.message}
+          onClose={() => setToast(null)}
+        />
+      )}
     </section>
   );
 };
+
 export default ContactSection;
+
