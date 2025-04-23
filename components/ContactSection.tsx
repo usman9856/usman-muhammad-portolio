@@ -5,27 +5,27 @@ import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from "lucide-react";
 import ToastMessage from "../utils/toast";
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [toast, setToast] = useState<{
-    type: "success" | "fail";
-    message: string;
-  } | null>(null);
+  // const [formData, setFormData] = useState({
+  //   name: "",
+  //   email: "",
+  //   subject: "",
+  //   message: "",
+  // });
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [toast, setToast] = useState<{
+  //   type: "success" | "fail";
+  //   message: string;
+  // } | null>(null);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setFormData((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  // };
 
   //   const handleSubmit = async (e: React.FormEvent) => {
   //     e.preventDefault();
@@ -104,7 +104,13 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Email</h4>
-                    <p className="text-gray-400">um50765@gmail.com</p>
+                    <a
+                      href="mailto:um50765@gmail.com"
+                      target="_blank"
+                      className="text-gray-400 hover:underline"
+                    >
+                      um50765@gmail.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -224,13 +230,13 @@ const ContactSection = () => {
       </div>
 
       {/* Render ToastMessage */}
-      {toast && (
+      {/* {toast && (
         <ToastMessage
           type={toast.type}
           message={toast.message}
           onClose={() => setToast(null)}
         />
-      )}
+      )} */}
     </section>
   );
 };

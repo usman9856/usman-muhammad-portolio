@@ -9,7 +9,7 @@ const AboutSection = () => {
           <h2 className="text-3xl font-bold mb-2">About Me</h2>
           <div className="w-20 h-1 bg-blue-400 mx-auto mb-12"></div>
         </header>
-        <div className="flex flex-col md:flex-row gap-10 items-center">
+        <div className="flex flex-col md:flex-row gap-10">
           <article className="md:w-1/2">
             <NeumorphicBox className="p-6">
               <p className="mb-4">
@@ -39,8 +39,8 @@ const AboutSection = () => {
               </p>
             </NeumorphicBox>
           </article>
-          <aside className="md:w-1/2">
-            <NeumorphicBox className="p-6">
+          <aside className="md:w-1/2  ">
+            <NeumorphicBox className="p-6 h-full flex flex-col justify-evenly">
               <section>
                 <h3 className="text-xl font-semibold mb-4 text-blue-400">
                   Personal Details
@@ -60,15 +60,30 @@ const AboutSection = () => {
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-400">Email:</span>
-                    <span>um50765@gmail.com</span>
+                    <span>
+                      <a href="mailto:um50765@gmail.com" target="_blank" className=" hover:underline">
+                        um50765@gmail.com
+                      </a>
+                    </span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span className="text-gray-400">Phone:</span>
+                    <span>
+                      <a href="tel:+1234567890" className="text-gray-400 hover:underline">
+                        +92 (331) 880-3736
+                      </a>
+                    </span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span className="text-gray-400">Education:</span>
+                    <span>BS(CS) Bahria University</span>
                   </li>
                   <li className="flex justify-between">
                     <span className="text-gray-400">Availability:</span>
-                    <span className="text-green-400">
-                      Available for opportunity
-                    </span>
+                    <span className="text-green-400">Available for opportunity</span>
                   </li>
                 </ul>
+
               </section>
               <section className="mt-6">
                 <h3 className="text-xl font-semibold mb-4 text-blue-400">
@@ -78,17 +93,22 @@ const AboutSection = () => {
                   {[
                     "Web Development",
                     "UI/UX Design",
-                    "Cybersecurity",
+                    "Cyber-Security",
                     "Games",
                     "Learning",
-                  ].map((interest) => (
-                    <span
-                      key={interest}
-                      className="bg-[#0a192f] px-3 py-1 rounded-full text-sm"
-                    >
-                      {interest}
-                    </span>
-                  ))}
+                    "Artificial Intelligence",
+                    "Travelling",
+                    "Fitness & Sports",
+                    "Volunteering",
+                  ]
+                    .map((interest) => (
+                      <span
+                        key={interest}
+                        className="bg-[#0a192f] px-3 py-1 rounded-full text-sm"
+                      >
+                        {interest}
+                      </span>
+                    ))}
                 </div>
               </section>
             </NeumorphicBox>
