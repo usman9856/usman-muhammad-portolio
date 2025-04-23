@@ -36,13 +36,18 @@ const HeroSection = () => {
               applications. Highly focused on MERN stack technologies.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              <NeumorphicBox
-                className="px-6 py-3 hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer"
-                onClick={handleDownloadCV}
-              >
-                <DownloadIcon size={18} />
-                Download CV
+
+              <NeumorphicBox>
+                <a
+                  href="/Usman-CV.pdf"
+                  target="_blank"
+                  className="px-6 py-3 hover:text-blue-400 transition-colors flex items-center gap-2 cursor-pointer"
+                >
+                  <DownloadIcon size={18} />
+                  Download CV
+                </a>
               </NeumorphicBox>
+
               <NeumorphicBox className="px-6 py-3 hover:text-blue-400 transition-colors cursor-pointer">
                 Contact Me
               </NeumorphicBox>

@@ -1,9 +1,13 @@
-"use client"
+"use client";
 
 const handleDownloadCV = () => {
-    // Replace with your actual CV PDF URL
-    const cvUrl = "https://example.com/john-doe-cv.pdf";
-    window.open(cvUrl, "_blank");
+    const cvUrl = "/cv/Usman-CV.pdf"; // Correct path relative to 'public'
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = "Usman-CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link); // Clean up
 };
 
-export default handleDownloadCV
+export default handleDownloadCV;
