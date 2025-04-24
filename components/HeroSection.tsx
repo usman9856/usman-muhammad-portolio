@@ -48,9 +48,9 @@ const HeroSection = () => {
                 </a>
               </NeumorphicBox>
 
-              <NeumorphicBox className="px-6 py-3 hover:text-blue-400 transition-colors cursor-pointer">
+              {/* <NeumorphicBox className="px-6 py-3 hover:text-blue-400 transition-colors cursor-pointer">
                 Contact Me
-              </NeumorphicBox>
+              </NeumorphicBox> */}
             </div>
             <div className="mt-10 flex gap-4 justify-center md:justify-start">
               <NeumorphicBox className="p-3 hover:text-blue-400">
