@@ -81,9 +81,12 @@ const HeroSection = () => {
             <NeumorphicBox className="p-2">
               <figure className="aspect-[3/4] w-full max-w-xl mx-auto overflow-hidden">
                 <Image
-                  src={UsmanBgRemoved}
+                  src="https://res.cloudinary.com/ds3gw35ft/image/upload/v1745476529/Usman-bgRemoved_hrybwo.png"
                   alt="Usman Muhammad"
+                  width={1920}
+                  height={1080}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  unoptimized
                 />
               </figure>
             </NeumorphicBox>
