@@ -41,10 +41,6 @@ const skills = [
         name: "GSAP",
         level: 70,
       },
-      {
-        name: "Strapi",
-        level: 70,
-      },
     ],
   },
   {
@@ -68,7 +64,11 @@ const skills = [
       },
       {
         name: "Blockchain",
-        level: 20,
+        level: 30,
+      },
+      {
+        name: "Strapi",
+        level: 70,
       },
     ],
   },
@@ -98,6 +98,10 @@ const skills = [
       {
         name: "REST APIs",
         level: 75,
+      },
+      {
+        name: "Dockers",
+        level: 10,
       },
     ],
   },

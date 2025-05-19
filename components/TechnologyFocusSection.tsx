@@ -8,6 +8,7 @@ import {
   BrainIcon,
   ShieldIcon,
 } from "lucide-react";
+
 const technologies = [
   {
     icon: <CodeIcon size={40} />,
@@ -23,19 +24,11 @@ const technologies = [
       "Learning how to creating intuitive and beautiful user interfaces with a focus on user experience and accessibility.",
     tools: ["Figma", "Material Design", "Responsive Design"],
   },
-  // {
-  //   icon: <SmartphoneIcon size={40} />,
-  //   title: "Mobile Development",
-  //   description:
-  //     "Building cross-platform mobile applications using React Native and modern mobile technologies.",
-  //   tools: ["React Native", "Expo", "Mobile UI/UX", "App Store Deployment"],
-  // },
   {
     icon: <CloudIcon size={40} />,
     title: "Cloud Services",
     description:
       "Leveraging cloud platforms to build scalable and reliable applications.",
-    // tools: ["AWS", "Vercel", "Netlify", "Cloud Functions"],
     tools: ["AWS", "Firebase"],
   },
   {
@@ -43,12 +36,7 @@ const technologies = [
     title: "AI Integration",
     description:
       "Implementing AI and machine learning solutions to enhance application capabilities.",
-    tools: [
-      // "OpenAI API",
-      "TensorFlow.js",
-      // "Natural Language Processing",
-      // "Computer Vision",
-    ],
+    tools: ["TensorFlow.js"],
   },
   {
     icon: <ShieldIcon size={40} />,
@@ -57,7 +45,15 @@ const technologies = [
       "Ensuring applications are secure, fast, and reliable through best practices and modern tools.",
     tools: ["Web Security", "Performance Optimization", "SEO", "Analytics"],
   },
+  // {
+  //   icon: <SmartphoneIcon size={40} />,
+  //   title: "Mobile Development",
+  //   description:
+  //     "Building cross-platform mobile applications using React Native and modern mobile technologies.",
+  //   tools: ["React Native", "Expo", "Mobile UI/UX", "App Store Deployment"],
+  // },
 ];
+
 const TechnologyFocusSection = () => {
   return (
     <section className="py-20 px-6 bg-[#081529]">

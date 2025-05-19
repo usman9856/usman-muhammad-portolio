@@ -8,6 +8,10 @@ import SkillsSection from "../components/SkillsSection";
 import EmploymentSection from "../components/EmploymentSection";
 import ContactSection from "../components/ContactSection";
 import Footer from "../components/Footer";
+import CurrentWorkSection from "../components/CurrentWorkSection";
+import CareerPathSection from "../components/CareerPathSection";
+import CertificationsSection from "../components/CertificationsSection";
+import SkillsGraphSection from "../components/SkillsGraphSection";
 
 export default function Home() {
   return (
@@ -19,10 +23,25 @@ export default function Home() {
           <AboutSection />
           <TechnologyFocusSection />
           <ProjectsSection />
+          <CurrentWorkSection />
+          <CertificationsSection />
           <SkillsSection />
           <EmploymentSection />
           <ContactSection />
         </main>
+        {/* <main>
+          <HeroSection />
+          <AboutSection />
+          <TechnologyFocusSection />
+          <CurrentWorkSection />
+          <ProjectsSection />
+          <CertificationsSection />
+          <CareerPathSection />
+          <SkillsSection />
+          <SkillsGraphSection /> 
+          <EmploymentSection />
+          <ContactSection />
+        </main> */}
         <Footer />
       </div>
     </div>

@@ -4,6 +4,7 @@ import {
   GithubIcon,
   LinkedinIcon,
   DownloadIcon,
+  ArrowUpIcon,
 } from "lucide-react";
 import NeumorphicBox from "./ui/NeumorphicBox";
 import UsmanBgRemoved from "../asset/images/Usman-bgRemoved.png";
@@ -36,7 +37,6 @@ const HeroSection = () => {
               applications. Highly focused on MERN stack technologies.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-
               <NeumorphicBox>
                 <a
                   href="/Usman-CV.pdf"
@@ -92,13 +92,13 @@ const HeroSection = () => {
             </NeumorphicBox>
           </aside>
         </div>
-        <footer className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <footer className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce w-full max-w-[80%] flex items-center justify-end">
           <button
             onClick={scrollToAbout}
-            className="text-gray-400 hover:text-blue-400 transition-colors"
+            className="text-gray-400 hover:text-blue-400 transition-colors w-10 h-10 rounded-4xl bg-blue-950 flex items-center justify-center"
             aria-label="Scroll to About Section"
           >
-            <ArrowDownIcon size={24} />
+            <ArrowUpIcon size={24} />
           </button>
         </footer>
       </div>
